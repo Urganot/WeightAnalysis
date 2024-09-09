@@ -1,0 +1,10 @@
+﻿@page "/analyzer"
+@rendermode InteractiveServer
+
+<a href="@Url">Manually Get new Token</a>
+
+<h3>Analyzer</h3>
+
+<textarea id="w3review" name="w3review" rows="4" cols="50">@DataCsv</textarea>
+
+<button @onclick="GetWeightData">Get Data</button>

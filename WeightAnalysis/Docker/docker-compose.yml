@@ -1,0 +1,28 @@
+# Use postgres/example user/password credentials
+name: weight-analyzer
+
+services:
+
+  db:
+    image: postgres
+    ports: 
+        - 5432:5432
+    restart: always
+    # set shared memory limit when using docker-compose
+    shm_size: 128mb
+    # or set shared memory limit when deploy via swarm stack
+    #volumes:
+    #  - type: tmpfs
+    #    target: /dev/shm
+    #    tmpfs:
+    #      size: 134217728 # 128*2^20 bytes = 128Mb
+    environment:
+        POSTGRES_PASSWORD: my_pw
+        POSTGRES_USER: my_user
+        POSTGRES_DB: withings
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+        - 8080:8080
